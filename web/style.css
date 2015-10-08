@@ -1,0 +1,79 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28/09/2015, 8:56:32 PM
+    Author     : alexa_000
+*/
+* { padding: 0; margin: 0 } 
+img { border: none; }
+
+html {
+    width: 100%;
+}
+
+header {
+    height: 70px;
+    background-color: white;
+    font-family: sans-serif;
+    padding-left: 18%;
+    margin-right: 18%;
+    display:flex;
+    align-items: center;
+}
+
+#main-content {
+    height: 400px;
+    background-image: url("images/car-mountain.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding-left: 18%;
+    padding-right: 18%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#main-text {
+    height: 200px;
+    padding-left: 18%;
+    padding-right: 18%;
+}
+
+#footer {
+    height: 100px;
+    padding-left: 18%;
+    padding-right: 18%;
+    background-color: grey;
+}
+
+h1 {
+    font-family: sans-serif;
+    color: grey;
+}
+
+h2 {
+    font-family: sans-serif;
+    color: white;
+}
+
+#left-content{
+    display: inline-table;
+    float: left;
+    width: 65%;
+}
+
+#right-content{
+    display: inline-table;
+    float: right;
+    width: 100px;
+}
+
+
+
+button[name="buttonLogin"] {
+   align:100px;
+}
+

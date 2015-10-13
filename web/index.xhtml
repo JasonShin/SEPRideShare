@@ -15,11 +15,28 @@
             <h1 id="left-content">RideShare</h1>
             
             <div id="right-content">
+                
                 <p:commandButton id="loginButton" value="Login" type="button"/>
-                    <p:overlayPanel id="loginPanel" for="loginButton" hideEffect="fade">
-                           
+                    
+                <p:overlayPanel id="loginPanel" for="loginButton" hideEffect="fade">
+                        
+                            <div id="container">
+                            <div>Email: </div>
+                            
+                            <div><p:inputText id="email" value="#{basicView.text}" /></div>
+                            <div>Password: </div>
+                            <div><p:inputText id="password" value="#{basicView.text}" /></div>
+                            
+                                <h:form>
+                                    <div>
+                                <p:commandButton value="Submit" id="loginSubmit" actionListener="#{buttonView.buttonAction}" ajax="false" />
+                                    </div>
+                                </h:form>
+                            
+                            </div>
                     </p:overlayPanel>
-            
+                                                   
+
             </div>
         </header>
         

@@ -2,44 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <title>Rideshare</title>
-    </h:head>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:include src="header.xhtml"/>
+    <title>Rideshare</title>
     <h:body>
-        <header class="header-bar">
-            <h1 id="left-content">RideShare</h1>
-            <div id="right-content">
-                <p:growl id="growl" life="2000" />
-                <p:commandButton id="loginButton" value="Login" type="button"/> 
-                <p:overlayPanel id="loginPanel" for="loginButton" hideEffect="fade">
-                    <div id="container">
-                        <div>Email: </div>
-                        <div>
-                            <h:form><p:inputText id="email" value="#{loginController.username}" /></h:form>
-                            
-                        </div>
-                        <div>
-                            Password: 
-                        </div>
-                        <div>
-                            <h:form>
-                                <p:inputText id="password" value="#{loginController.password}" />
-                            </h:form>
-                        </div>
-                        <div style="padding-top: 10px;"> 
-                            <h:form>
-                            <p:commandButton value="Login" id="loginSubmit" actionListener="#{loginController.loginAction}" onclick="loginFunction();" ajax="false" />
-<!--                            <p:commandButton value="Register" id="register" onclick="href=/register.html" ajax="false" />-->
-                            <a href="/SEPRideShare/register.xhtml">Register</a>
-                            </h:form>
-                            
-                        </div> 
-                    </div>
-                </p:overlayPanel>
-            </div>
-        </header>
+        
         <div id="main-content">                       
             <h2>Our Mission</h2>
         </div>
@@ -49,8 +18,9 @@
         <div id="footer">
         </div>
 
-
         <script src="login.controller.js"></script>
     </h:body>
+    
+    <ui:include src="footer.xhtml"/>
 </html>
 

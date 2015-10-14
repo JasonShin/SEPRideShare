@@ -7,15 +7,13 @@ package HTMLcontroller;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import java.awt.event.*;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 @Named
 @RequestScoped
-public class loginController{
+public class LoginController{
     private String username;
     private String password;
     
@@ -33,7 +31,6 @@ public class loginController{
     }
     
     public void loginAction(ActionEvent actionEvent) {
-        
         //call tryLogin function here
         
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "does this work?",  null);

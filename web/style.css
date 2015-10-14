@@ -24,6 +24,27 @@ header {
     align-items: center;
 }
 
+nav {
+    position:relative;
+    background-color: darkcyan;
+    border-radius: inherit;
+    text-align:center;
+}
+
+nav ul {
+    list-style-type:armenian;
+}
+
+nav li {
+    display:inline-table;
+    font-size:large;
+}
+
+nav a {
+    text-decoration:none;
+    /*padding-right:30px;*/
+}
+
 #main-content {
     height: 400px;
     background-image: url("images/car-mountain.jpg");

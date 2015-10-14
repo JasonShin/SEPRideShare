@@ -38,6 +38,8 @@ public class Ride implements Serializable{
     private Date datePosted;
     private int xLocation;
     private int yLocation;
+    //Foreign key
+    private String username;
 
     public long getId() {
         return id;

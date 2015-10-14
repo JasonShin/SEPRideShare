@@ -5,7 +5,6 @@
  */
 package com.ridesahre.edu.au.controller;
 
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -15,22 +14,9 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class DriverController {
+public class AccountController {
+    private String username;
+    private String password;
     
-    //EJB simply injects dependent (create new objects of them in the J2EE container)
-    //beans to this controller so it can use it.
-    
-    
-    public void postRide(){
-        
-    }
-    
-    public void deleteRide(){
-        
-    }
-    
-    public void acceptRideRequest(){
-        
-    }
     
 }

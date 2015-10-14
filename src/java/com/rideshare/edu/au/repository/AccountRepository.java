@@ -5,7 +5,7 @@
  */
 package com.rideshare.edu.au.repository;
 
-import com.rideshare.edu.au.model.Passenger;
+import com.rideshare.edu.au.model.Account;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,40 +16,33 @@ import javax.persistence.PersistenceContext;
  * @author Jason
  */
 @Stateless
-public class PassengerRepository {
-    
+public class AccountRepository {
     @PersistenceContext
     private EntityManager em;
     
-    //C
-    public void create(Passenger passenger){
-        em.persist(passenger);
+    public void create(Account account){
+        em.persist(account);
         em.flush();
     }
     
-    //R
-    public Passenger findByPassengerName(String username){
-        return em.createNamedQuery("findPassengerByUsername", Passenger.class)
+    public Account read(String username){
+        return em.createNamedQuery("findAccountByUsername", Account.class)
                 .setParameter("username", username)
                 .getSingleResult();
     }
     
-    public List<Passenger> findAll(){
-        return em.createNamedQuery("findAll", Passenger.class)
+    public List<Account> findAll(){
+        return em.createNamedQuery("findAll", Account.class)
                 .getResultList();
     }
     
-    //U
-    public void update(Passenger passenger){
+    public void update(Account account){
         
     }
     
-    
-    //D
     public void delete(String username){
-        em.createNamedQuery("deletePassengerByUsername", Passenger.class)
+        em.createNamedQuery("deleteAccountByUsername", Account.class)
                 .setParameter("username", username)
                 .executeUpdate();
     }
-    
 }

@@ -5,7 +5,6 @@
  */
 package com.rideshare.edu.au.model;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -15,22 +14,23 @@ import javax.persistence.NamedQuery;
  *
  * @author Jason
  */
+//User can either become driver or passenger
 @Entity
 @NamedQueries({
     @NamedQuery(
-            name="findDriverByUsername",
-            query="SELECT d "
-                    + "FROM Driver d "
-                    + "WHERE :username = d.username"),
+            name="findAccountByUsername",
+            query="SELECT a "
+                    + "FROM Account a "
+                    + "WHERE :username = a.username"),
     @NamedQuery(
             name="findAll",
-            query="SELECT d FROM Driver d"),
+            query="SELECT a FROM Account a"),
     @NamedQuery(
-            name="deleteDriverByUsername",
-            query="DELETE FROM Driver d "
-                    + "WHERE :username = d.username")
+            name="deleteAccountByUsername",
+            query="DELETE FROM Account a "
+                    + "WHERE :username = a.username")
 })
-public class Driver implements Serializable{
+public class Account {
     @Id
     private String username;
     private String password;
@@ -39,9 +39,6 @@ public class Driver implements Serializable{
     private boolean postRide;
     private boolean readRide;
     private boolean deleteRide;
-    private int carLocation;
-    private int numSeats;
-    
 
     public String getUsername() {
         return username;
@@ -98,22 +95,8 @@ public class Driver implements Serializable{
     public void setDeleteRide(boolean deleteRide) {
         this.deleteRide = deleteRide;
     }
-
-    public int getCarLocation() {
-        return carLocation;
-    }
-
-    public void setCarLocation(int carLocation) {
-        this.carLocation = carLocation;
-    }
-
-    public int getNumSeats() {
-        return numSeats;
-    }
-
-    public void setNumSeats(int numSeats) {
-        this.numSeats = numSeats;
-    }
+    
+    
     
     
 }

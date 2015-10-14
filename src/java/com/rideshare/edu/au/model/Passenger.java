@@ -8,12 +8,28 @@ package com.rideshare.edu.au.model;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Jason
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name="findPassengerByUsername",
+            query="SELECT p "
+                    + "FROM Paseenger p "
+                    + "WHERE :username = p.username"),
+    @NamedQuery(
+            name="findAll",
+            query="SELECT p FROM Passenger p"),
+    @NamedQuery(
+            name="deletePassengerByUsername",
+            query="DELETE FROM Passenger p "
+                    + "WHERE :username = p.username")
+})
 public class Passenger implements Serializable {
     @Id
     private String username;

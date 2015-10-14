@@ -8,12 +8,28 @@ package com.rideshare.edu.au.model;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Jason
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name="findDriverByUsername",
+            query="SELECT d "
+                    + "FROM Driver d "
+                    + "WHERE :username = d.username"),
+    @NamedQuery(
+            name="findAll",
+            query="SELECT d FROM Driver d"),
+    @NamedQuery(
+            name="deleteDriverByUsername",
+            query="DELETE FROM Driver d "
+                    + "WHERE :username = d.username")
+})
 public class Driver implements Serializable{
     @Id
     private String username;

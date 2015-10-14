@@ -9,12 +9,29 @@ import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Jason
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name="findRideById",
+            query="SELECT r "
+                    + "FROM Ride r "
+                    + "WHERE :id = r.id"),
+    @NamedQuery(
+            name="updateRide",
+            query="UPDATE Ride r "
+                    + "SET r.datePosted = :datePosted, r.xLocation = :xLocation, r.yLocation = :yLocation "
+                    + "WHERE r.id = :id"),
+    @NamedQuery(
+            name="deleteRideById",
+            query="DELETE FROM Ride r WHERE r.id = :id")
+})
 public class Ride implements Serializable{
     @Id
     private long id;

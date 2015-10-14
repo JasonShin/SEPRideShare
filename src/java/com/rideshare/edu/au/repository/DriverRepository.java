@@ -22,7 +22,7 @@ import javax.persistence.criteria.Root;
  */
 //Worth noting that @Stateless
 @Stateless
-public class DriverRepository {
+public class DriverRepository{
     //@PersistenceContext triggers DB to create tables
     @PersistenceContext
     private EntityManager em;
@@ -33,29 +33,14 @@ public class DriverRepository {
     }
     
     public Driver read(String username){
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<Driver> cq = builder.createQuery(Driver.class);
-        Root<Driver> p = cq.from(Driver.class);
-        cq.select(p);
-        cq.where(builder.equal(p.get(Driver_.username), username));
-        
-        Driver driver;
-        List<Driver> driverList = em.createQuery(cq).getResultList();
-        if(driverList.isEmpty()){
-            return null;
-        }
-        driver = driverList.get(0);
-        return driver;
+        return em.createNamedQuery("findDriverByUsername", Driver.class)
+                .setParameter("username", username)
+                .getSingleResult();
     }
     
-    public List<Driver> readAll(){
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<Driver> cq = builder.createQuery(Driver.class);
-        Root<Driver> p = cq.from(Driver.class);
-        cq.select(p);
-        
-        List<Driver> driverList = em.createQuery(cq).getResultList();
-        return driverList;
+    public List<Driver> findAll(){
+        return em.createNamedQuery("findAll", Driver.class)
+                .getResultList();
     }
     
     public void update(Driver driver){
@@ -63,12 +48,8 @@ public class DriverRepository {
     }
     
     public void delete(String username){
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaDelete<Driver> cd = builder.createCriteriaDelete(Driver.class);
-        Root<Driver> p = cd.from(Driver.class);
-        cd.where(builder.equal(p.get(Driver_.username), username));
-        em.createQuery(cd).executeUpdate();
-        em.flush();
-        
+        em.createNamedQuery("deleteDriverByUsername", Driver.class)
+                .setParameter("username", username)
+                .executeUpdate();
     }
 }

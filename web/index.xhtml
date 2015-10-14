@@ -31,8 +31,10 @@
                         <div style="padding-top: 10px;"> 
                             <h:form>
                             <p:commandButton value="Login" id="loginSubmit" actionListener="#{loginController.loginAction}" onclick="loginFunction();" ajax="false" />
-                            <p:commandButton value="Register" id="register" onclick="registerFunction();" ajax="false" />
+<!--                            <p:commandButton value="Register" id="register" onclick="href=/register.html" ajax="false" />-->
+                            <a href="/SEPRideShare/register.xhtml">Register</a>
                             </h:form>
+                            
                         </div> 
                     </div>
                 </p:overlayPanel>

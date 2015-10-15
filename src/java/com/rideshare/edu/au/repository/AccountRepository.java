@@ -5,8 +5,12 @@
  */
 package com.rideshare.edu.au.repository;
 
+import com.rideshare.edu.au.helper.SHA;
 import com.rideshare.edu.au.model.Account;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,8 +25,14 @@ public class AccountRepository {
     private EntityManager em;
     
     public void create(Account account){
-        em.persist(account);
-        em.flush();
+        try {
+            String encryptedPassword = SHA.hash256(account.getPassword());
+            account.setPassword(encryptedPassword);
+            em.persist(account);
+            em.flush();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(AccountRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public Account read(String username){

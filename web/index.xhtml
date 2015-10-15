@@ -15,9 +15,9 @@
                 <p:commandButton id="loginButton" value="Login" type="button"/> 
                 <p:overlayPanel id="loginPanel" for="loginButton" hideEffect="fade">
                     <div id="container">
-                        <div>Email: </div>
+                        <div>username or email: </div>
                         <div>
-                            <h:form><p:inputText id="email" value="#{loginController.username}" /></h:form>
+                            <h:form><p:inputText id="username" value="#{accountController.account.username}" /></h:form>
                             
                         </div>
                         <div>
@@ -25,14 +25,13 @@
                         </div>
                         <div>
                             <h:form>
-                                <p:inputText id="password" value="#{loginController.password}" />
+                                <p:inputText id="password" value="#{accountController.account.password}" />
                             </h:form>
                         </div>
                         <div style="padding-top: 10px;"> 
                             <h:form>
-                            <p:commandButton value="Login" id="loginSubmit" actionListener="#{loginController.loginAction}" onclick="loginFunction();" ajax="false" />
-<!--                            <p:commandButton value="Register" id="register" onclick="href=/register.html" ajax="false" />-->
-                            <a href="/SEPRideShare/register.xhtml">Register</a>
+                                <p:commandButton value="Login" id="loginSubmit" action="#{accountController.signup()} "ajax="false" />
+                                <!-- <a href="/SEPRideShare/register.xhtml">Register</a> -->
                             </h:form>
                             
                         </div> 

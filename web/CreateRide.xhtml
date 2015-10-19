@@ -11,10 +11,12 @@
         <!-- CREATE RIDE START -->
         
         <h:form>
-            <div>Insert x location</div>
-            <h:inputText id="xloc" value="#{rideController.ride.xloc}" />
-            <div>Insert y location</div>
-            <h:inputText id="yloc" value="#{rideController.ride.yloc}" />
+            <div>Insert starting destination</div>
+            <h:inputText id="startDest" value="#{rideController.ride.startingDestination}" />
+            
+            <div>Insert finishing destination</div>
+            <h:inputText id="finishDest" value="#{rideController.ride.finishedDestination}" />
+            
             <h:commandButton value="Create" action="#{rideController.create()}" />
         </h:form>
         

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
     
     <ui:include src="header.xhtml"/>
     <title>Rideshare</title>
@@ -20,12 +21,16 @@
 
                             <div>username or email: </div>
                             <div>
-                                <p:inputText id="username" value="#{accountController.account.username}" />
+                                <p:inputText id="newUsername" value="#{accountController.account.username}">
+                                    <f:validator validatorId="custom.usernameValidator" />
+                                </p:inputText>
 
                             </div>
                             <div>Password: </div>
                             <div>
-                                <p:inputText id="password" value="#{accountController.account.password}" />
+                                <p:inputText id="newPassword" value="#{accountController.account.password}">
+                                    <f:validator validatorId="custom.passwordValidator" />
+                                </p:inputText>
 
                             </div>
                             
@@ -40,6 +45,9 @@
                                 <p:inputText id="email" value="#{accountController.account.email}" />
                             </div>
                             
+                            <!-- Display any error messages associated for this input -->
+                            <p:message for="newUsername" />
+                            <p:message for="newPassword" />
                             
                             <div style="padding-top: 10px;"> 
 

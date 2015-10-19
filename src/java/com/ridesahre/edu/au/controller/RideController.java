@@ -5,14 +5,18 @@
  */
 package com.ridesahre.edu.au.controller;
 
+import com.rideshare.edu.au.helper.DateHelper;
+import com.rideshare.edu.au.helper.RequestHelper;
+import com.rideshare.edu.au.helper.URLParamHelper;
 import com.rideshare.edu.au.model.Ride;
 import com.rideshare.edu.au.repository.RideRepository;
-import java.util.Date;
+import java.sql.Date;
+import java.util.Calendar;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -41,11 +45,19 @@ public class RideController {
         this.ride = ride;
     }
     
+    public Ride findRide(){
+        if(URLParamHelper.getRideId() != null){
+            return repos.findRideById(Integer.parseInt(URLParamHelper.getRideId()));
+        } else {
+            return null;
+        }
+        
+    }
     
     
     public void create(){
-        
-        //ride.setDatePosted(new Date());
+        ride.setUsername(RequestHelper.getUsername());
+        ride.setDepartureTime(DateHelper.getCurrentSqlDate());
         repos.create(ride);
     }
     

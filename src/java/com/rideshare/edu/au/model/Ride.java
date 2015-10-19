@@ -24,11 +24,11 @@ import javax.persistence.NamedQuery;
             query="SELECT r "
                     + "FROM Ride r "
                     + "WHERE :id = r.id"),
-    @NamedQuery(
+    /*@NamedQuery(
             name="updateRide",
             query="UPDATE Ride r "
                     + "SET r.datePosted = :datePosted, r.xloc = :xloc, r.yloc = :yloc "
-                    + "WHERE r.id = :id"),
+                    + "WHERE r.id = :id"),*/
     @NamedQuery(
             name="deleteRideById",
             query="DELETE FROM Ride r WHERE r.id = :id"),

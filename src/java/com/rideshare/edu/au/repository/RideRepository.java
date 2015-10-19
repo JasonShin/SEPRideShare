@@ -42,11 +42,11 @@ public class RideRepository {
     
     
     //U
-    public void updateRide(Ride ride){
+    /*public void updateRide(Ride ride){
         em.createNamedQuery("updateRide", Ride.class)
                 .setParameter("id", ride.getId())
                 .executeUpdate();
-    }
+    }*/
     
     //D
     public void deleteRideById(int id){

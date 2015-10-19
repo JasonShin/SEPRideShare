@@ -12,31 +12,77 @@
             <h1 id="left-content">RideShare</h1>
             <div id="right-content">
                 <p:growl id="growl" life="2000" />
-                <p:commandButton id="loginButton" value="Login" type="button"/> 
-                <p:overlayPanel id="loginPanel" for="loginButton" hideEffect="fade">
-                    <div id="container">
-                        <div>username or email: </div>
-                        <div>
-                            <h:form><p:inputText id="username" value="#{accountController.account.username}" /></h:form>
-                            
-                        </div>
-                        <div>
-                            Password: 
-                        </div>
-                        <div>
-                            <h:form>
+                <h:form rendered="#{empty request.remoteUser}">
+                    <p:commandButton id="signupButton" value="Signup" type="button"/> 
+                    <p:overlayPanel id="loginPanel" for="signupButton" hideEffect="fade">
+                        
+                        <div id="container">
+
+                            <div>username or emailaa: </div>
+                            <div>
+                                <p:inputText id="username" value="#{accountController.account.username}" />
+
+                            </div>
+                            <div>Password: </div>
+                            <div>
                                 <p:inputText id="password" value="#{accountController.account.password}" />
-                            </h:form>
-                        </div>
-                        <div style="padding-top: 10px;"> 
-                            <h:form>
-                                <p:commandButton value="Login" id="loginSubmit" action="#{accountController.signup()} "ajax="false" />
-                                <!-- <a href="/SEPRideShare/register.xhtml">Register</a> -->
-                            </h:form>
+
+                            </div>
                             
-                        </div> 
-                    </div>
-                </p:overlayPanel>
+                            
+                            <div>Phone: </div>
+                            <div>
+                                <p:inputText id="phone" value="#{accountController.account.phone}" />
+                            </div>
+                            
+                            <div>Email: </div>
+                            <div>
+                                <p:inputText id="email" value="#{accountController.account.email}" />
+                            </div>
+                            
+                            
+                            <div style="padding-top: 10px;"> 
+
+                                <p:commandButton value="Signup" id="signupSubmit" action="#{accountController.signup()}" ajax="false" />
+
+
+                            </div> 
+
+                        </div>
+
+                    </p:overlayPanel>
+                </h:form>
+                
+                
+                <h:form rendered="#{empty request.remoteUser}">
+                    <p:commandButton id="loginButton" value="Login" type="button"/> 
+                    <p:overlayPanel id="loginPanel" for="loginButton" hideEffect="fade">
+                        
+                        <div id="container">
+
+                            <div>username or email: </div>
+                            <div>
+                                <p:inputText id="username" value="#{accountController.account.username}" />
+
+                            </div>
+                            <div>Password: </div>
+                            <div>
+                                <p:inputText id="password" value="#{accountController.account.password}" />
+
+                            </div>
+                            <div style="padding-top: 10px;"> 
+                                <p:commandButton value="Login" id="loginSubmit" action="#{accountController.login()}" ajax="false" />
+                            </div> 
+
+                        </div>
+
+                    </p:overlayPanel>
+                </h:form>
+
+                <h:form rendered="#{not empty request.remoteUser}">
+                    <p:commandButton value="Logout" id="logout" action="#{accountController.logout()}" ajax="false" />
+
+                </h:form>
             </div>
         </header>
         <div id="main-content">                       

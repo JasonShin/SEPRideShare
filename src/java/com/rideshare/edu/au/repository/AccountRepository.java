@@ -28,6 +28,8 @@ public class AccountRepository {
         try {
             String encryptedPassword = SHA.hash256(account.getPassword());
             account.setPassword(encryptedPassword);
+            account.setGroupname("Users");
+            System.out.println("Signup: " + account.getUsername());
             em.persist(account);
             em.flush();
         } catch (NoSuchAlgorithmException ex) {

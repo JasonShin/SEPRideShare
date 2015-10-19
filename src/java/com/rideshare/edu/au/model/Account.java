@@ -5,6 +5,7 @@
  */
 package com.rideshare.edu.au.model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -30,15 +31,13 @@ import javax.persistence.NamedQuery;
             query="DELETE FROM Account a "
                     + "WHERE :username = a.username")
 })
-public class Account {
+public class Account implements Serializable {
     @Id
     private String username;
     private String password;
     private String phone;
     private String email;
-    private boolean postRide;
-    private boolean readRide;
-    private boolean deleteRide;
+    private String groupname;
 
     public String getUsername() {
         return username;
@@ -72,31 +71,13 @@ public class Account {
         this.email = email;
     }
 
-    public boolean isPostRide() {
-        return postRide;
+    public String getGroupname() {
+        return groupname;
     }
 
-    public void setPostRide(boolean postRide) {
-        this.postRide = postRide;
+    public void setGroupname(String groupname) {
+        this.groupname = groupname;
     }
-
-    public boolean isReadRide() {
-        return readRide;
-    }
-
-    public void setReadRide(boolean readRide) {
-        this.readRide = readRide;
-    }
-
-    public boolean isDeleteRide() {
-        return deleteRide;
-    }
-
-    public void setDeleteRide(boolean deleteRide) {
-        this.deleteRide = deleteRide;
-    }
-    
-    
     
     
 }

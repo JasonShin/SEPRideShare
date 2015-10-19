@@ -9,6 +9,7 @@ import com.rideshare.edu.au.model.Account;
 import com.rideshare.edu.au.repository.AccountRepository;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -24,11 +25,15 @@ import javax.servlet.http.HttpServletRequest;
 @RequestScoped
 public class AccountController {
     
-    @EJB
     private Account account;
     @EJB
     private AccountRepository repos;
 
+    @PostConstruct
+    public void init(){
+        account = new Account();
+    }
+    
     public Account getAccount() {
         return account;
     }
@@ -44,10 +49,22 @@ public class AccountController {
         repos.create(account);
     }
     
+    public void logout(){
+        try {
+            FacesContext context = FacesContext.getCurrentInstance();
+            HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+            request.logout();
+        } catch (ServletException ex) {
+            Logger.getLogger(AccountController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void login(){
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        System.out.println("trying to login");
         try {
+            
             request.login(account.getUsername(), account.getPassword());
         } catch (ServletException ex) {
             Logger.getLogger(AccountController.class.getName()).log(Level.SEVERE, null, ex);

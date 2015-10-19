@@ -30,6 +30,7 @@ import javax.persistence.NamedQuery;
             name="deleteAccountByUsername",
             query="DELETE FROM Account a "
                     + "WHERE :username = a.username")
+    
 })
 public class Account implements Serializable {
     @Id

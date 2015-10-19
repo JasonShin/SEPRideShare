@@ -15,46 +15,15 @@ and open the template in the editor.
 </h:head>
     
  <header class="header-bar">
-            <h1 id="left-content">RideShare</h1>
-            <div id="right-content">
-                <p:growl id="growl" life="2000" />
-                <p:commandButton id="loginButton" value="Login" type="button"/> 
-                <p:overlayPanel id="loginPanel" for="loginButton" hideEffect="fade">
-                    <div id="container">
-                        <div>Email: </div>
-                        <div>
-                            <h:form><p:inputText id="email" value="#{loginController.username}" /></h:form>
-                            
-                        </div>
-                        <div>
-                            Password: 
-                        </div>
-                        <div>
-                            <h:form>
-                                <p:inputText type="password" id="password" value="#{loginController.password}" />
-                            </h:form>
-                        </div>
-                        <div style="padding-top: 10px;"> 
-                            <h:form>
-                            <p:commandButton value="Login" id="loginSubmit" actionListener="#{loginController.loginAction}" onclick="loginFunction();" ajax="false" />
-<!--                            <p:commandButton value="Register" id="register" onclick="href=/register.html" ajax="false" />-->
-                            <a href="register.xhtml">Register</a>
-                            </h:form>
-                            
-                        </div> 
-                    </div>
-                </p:overlayPanel>
-            </div>
-     
-            
-        </header>
+
+   </header>
     
     <nav>
         <ul>
 
             <li> <a rel="glow" class="button glow" href="index.html">Home</a></li>
-            <li> <a rel="glow" class="button glow" href="myrides.html"> My Rides </a></li>
-            <li> <a rel="glow" class="button glow" href="createride.html"> Create Ride</a></li>
+            <li> <a rel="glow" class="button glow" href="MyRides.xhtml"> My Rides </a></li>
+            <li> <a rel="glow" class="button glow" href="CreateRide.xhtml"> Create Ride</a></li>
             <li> <a rel="glow" class="button glow" href="viewride.html">View Ride </a></li>
             <li> <a rel="glow" class="button glow" href="about.html">About Us </a></li>
 

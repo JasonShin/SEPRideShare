@@ -6,7 +6,9 @@
 package com.ridesahre.edu.au.controller;
 
 import com.rideshare.edu.au.model.Ride;
+import com.rideshare.edu.au.repository.RideRepository;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -18,9 +20,10 @@ import javax.inject.Named;
 @RequestScoped
 public class RidesController {
     
-    
+    @EJB
+    private RideRepository repos;
     
     public List<Ride> getRideList(){
-        return null;
+        return repos.findAll();
     }
 }

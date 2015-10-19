@@ -6,6 +6,7 @@
 package com.rideshare.edu.au.repository;
 
 import com.rideshare.edu.au.model.Ride;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +21,7 @@ public class RideRepository {
     @PersistenceContext
     private EntityManager em;
     
+    
     //C
     public void create(Ride ride){
         em.persist(ride);
@@ -33,13 +35,15 @@ public class RideRepository {
                 .getSingleResult();
     }
     
+    public List<Ride> findAll(){
+        return em.createNamedQuery("findAllRides", Ride.class)
+                .getResultList();
+    }
+    
     
     //U
     public void updateRide(Ride ride){
         em.createNamedQuery("updateRide", Ride.class)
-                .setParameter("datePosted", ride.getDatePosted())
-                .setParameter("xLocation", ride.getxLocation())
-                .setParameter("yLocation", ride.getyLocation())
                 .setParameter("id", ride.getId())
                 .executeUpdate();
     }

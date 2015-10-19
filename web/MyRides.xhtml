@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
+    
+    <title>Rideshare</title>
+    <h:body>
+        
+        
+        <h:dataTable value="#{ridesController.rideList}" var="ride">
+            <h:column rowHeader="Start destination">
+                <h:outputText value="#{ride.startingDestination}" />
+            </h:column>
+            
+            <h:column rowHeader="Finish destination">
+                <h:outputText value="#{ride.finishedDestination}" />
+            </h:column>
+            
+            <h:column rowHeader="Phone number">
+                <h:outputText value="#{ride.phoneNumber}" />
+            </h:column>
+            
+            
+            <h:column rowHeader="Passenger">
+                <h:outputText value="#{ride.passengerLimit}" />
+            </h:column>
+            
+            <h:column rowHeader="Departure time">
+                <h:outputText value="#{ride.departureTime}" />
+            </h:column>
+            
+        </h:dataTable>
+        
+    </h:body>
+</html>
+
+

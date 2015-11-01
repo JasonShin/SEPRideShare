@@ -1,12 +1,3 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 28/09/2015, 8:56:32 PM
-    Author     : alexa_000
-*/
 * { padding: 0; margin: 0 } 
 img { border: none; }
 
@@ -20,7 +11,7 @@ header {
     font-family: sans-serif;
     padding-left: 18%;
     margin-right: 18%;
-    /*display:flex;*/
+    display:flex;
     align-items: center;
 }
 
@@ -52,7 +43,7 @@ nav a {
     background-size: 100%;
     padding-left: 18%;
     padding-right: 18%;
-    /*display:flex;*/
+    display:flex;
     align-items: center;
     justify-content: center;
 }
@@ -77,14 +68,14 @@ width: 150px;
     background-color: grey;
 }
 
-h1 {
+h1 > a {
     font-family: sans-serif;
     color: grey;
+    text-decoration: none;
 }
 
 h2 {
     font-family: sans-serif;
-    color: white;
 }
 
 #left-content{
@@ -105,3 +96,55 @@ button[name="buttonLogin"] {
    align:100px;
 }
 
+/************
+VIEW MY RIDES
+************/
+
+#Central{
+    padding-top: 15px;
+    width: 1024px;
+    margin: 0px auto;
+}
+
+#CreateRideForm{
+    width: 320px;
+    margin: 0px auto;
+}
+
+#CreateRideFormHeader{
+    padding: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #bbbbbb;
+    text-align: center;
+}
+
+#CreateRideSubmit{
+    width: 300px;
+    margin-top: 40px;
+}
+#CreateRideSubmit > button{
+    width: 320px;
+}
+
+
+#CreateRideStart {
+    margin-top: 10px;
+    width: 300px;
+}
+
+#CreateRideStart > input{
+    padding: 10px;
+    width: 300px;
+}
+
+
+#CreateRideEnd {
+    margin-top: 10px;
+    width: 300px;
+}
+
+#CreateRideEnd > input{
+    width: 300px;
+    padding: 10px;
+}

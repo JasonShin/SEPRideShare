@@ -3,44 +3,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"> 
     
-    <title>Rideshare</title>
+    <ui:include src="header.xhtml"/>
     <h:body>
         
+        <div id="Central">
+            <p:dataTable value="#{ridesController.rideList}" var="ride">
+                <p:column headerText="Start destination">
+                    <h:outputText value="#{ride.startingDestination}" />
+                </p:column>
+
+                <p:column headerText="Finish destination">
+                    <h:outputText value="#{ride.finishedDestination}" />
+                </p:column>
+
+                <p:column headerText="Passenger">
+                    <h:outputText value="#{ride.passengerLimit}" />
+                </p:column>
+
+                <p:column headerText="Departure time">
+                    <h:outputText value="#{ride.departureTime}" />
+                </p:column>
+
+
+                <p:column headerText="Accept Ride">
+                    <h:link value="Accept this ride" outcome="AcceptRide.xhtml">
+                        <f:param name="rid" value="#{ride.id}" />
+                    </h:link>
+                </p:column>
+
+                <p:column rendered="#{ride.username eq request.remoteUser}" headerText="Cancel Ride">
+                    <p:commandButton value="Cancel this ride" />
+                </p:column>
+
+
+            </p:dataTable>
+        </div>
         
-        <p:dataTable value="#{ridesController.rideList}" var="ride">
-            <p:column headerText="Start destination">
-                <h:outputText value="#{ride.startingDestination}" />
-            </p:column>
-            
-            <p:column headerText="Finish destination">
-                <h:outputText value="#{ride.finishedDestination}" />
-            </p:column>
-            
-            <p:column headerText="Passenger">
-                <h:outputText value="#{ride.passengerLimit}" />
-            </p:column>
-            
-            <p:column headerText="Departure time">
-                <h:outputText value="#{ride.departureTime}" />
-            </p:column>
-            
-            
-            <p:column headerText="Accept Ride">
-                <h:link value="Accept this ride" outcome="AcceptRide.xhtml">
-                    <f:param name="rid" value="#{ride.id}" />
-                </h:link>
-            </p:column>
-            
-            <p:column rendered="#{ride.username eq request.remoteUser}" headerText="Cancel Ride">
-                <p:commandButton value="Cancel this ride" />
-            </p:column>
-            
-            
-        </p:dataTable>
-        
-    </h:body>
+   </h:body>
+    
+   <ui:include src="footer.xhtml"/>
 </html>
-
-

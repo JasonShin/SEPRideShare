@@ -55,10 +55,11 @@ public class RideController {
     }
     
     
-    public void create(){
+    public String create(){
         ride.setUsername(RequestHelper.getUsername());
         ride.setDepartureTime(DateHelper.getCurrentSqlDate());
         repos.create(ride);
+        return "/index.xhtml?faces-redirect=true";
     }
     
 }

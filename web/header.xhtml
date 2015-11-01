@@ -7,26 +7,104 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
-<h:head>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
-    <link href="css\hover.css" rel="stylesheet" media="all"></link>
-</h:head>
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link href="css\hover.css" rel="stylesheet" media="all"></link>
+    </h:head>
     
- <header class="header-bar">
+    <header class="header-bar">
+        <h1 id="left-content"><a href="/RideShare/faces/index.xhtml">RideShare</a></h1>
+        <div id="right-content">
+            <h:form rendered="#{empty request.remoteUser}">
+                <p:commandButton id="signupButton" value="Signup" type="button"/> 
+                <p:overlayPanel id="loginPanel" for="signupButton" hideEffect="fade">
 
-   </header>
-    
+                    <div id="container">
+
+                        <div>username or email: </div>
+                        <div>
+                            <p:inputText id="newUsername" value="#{accountController.account.username}">
+                                <f:validator validatorId="custom.usernameValidator" />
+                            </p:inputText>
+
+                        </div>
+                        <div>Password: </div>
+                        <div>
+                            <p:inputText id="newPassword" value="#{accountController.account.password}">
+                                <f:validator validatorId="custom.passwordValidator" />
+                            </p:inputText>
+
+                        </div>
+
+
+                        <div>Phone: </div>
+                        <div>
+                            <p:inputText id="phone" value="#{accountController.account.phone}" />
+                        </div>
+
+                        <div>Email: </div>
+                        <div>
+                            <p:inputText id="email" value="#{accountController.account.email}" />
+                        </div>
+
+                        <!-- Display any error messages associated for this input -->
+                        <p:message for="newUsername" />
+                        <p:message for="newPassword" />
+
+                        <div style="padding-top: 10px;"> 
+
+                            <p:commandButton value="Signup" id="signupSubmit" action="#{accountController.signup()}" ajax="false" />
+                        </div> 
+
+                    </div>
+
+                </p:overlayPanel>
+            </h:form>
+
+
+            <h:form rendered="#{empty request.remoteUser}">
+                <p:commandButton id="loginButton" value="Login" type="button"/> 
+                <p:overlayPanel id="loginPanel" for="loginButton" hideEffect="fade">
+
+                    <div id="container">
+
+                        <div>username or email: </div>
+                        <div>
+                            <p:inputText id="username" value="#{accountController.account.username}" />
+
+                        </div>
+                        <div>Password: </div>
+                        <div>
+                            <p:inputText id="password" value="#{accountController.account.password}" />
+
+                        </div>
+                        <div style="padding-top: 10px;"> 
+                            <p:commandButton value="Login" id="loginSubmit" action="#{accountController.login()}" ajax="false" />
+                        </div> 
+
+                    </div>
+
+                </p:overlayPanel>
+            </h:form>
+
+            <h:form rendered="#{not empty request.remoteUser}">
+                <p:commandButton value="Logout" id="logout" action="#{accountController.logout()}" ajax="false" />
+
+            </h:form>
+        </div>
+    </header>
+
     <nav>
         <ul>
 
-            <li> <a rel="glow" class="button glow" href="index.html">Home</a></li>
+            <li> <a rel="glow" class="button glow" href="index.xhtml">Home</a></li>
             <li> <a rel="glow" class="button glow" href="MyRides.xhtml"> My Rides </a></li>
             <li> <a rel="glow" class="button glow" href="CreateRide.xhtml"> Create Ride</a></li>
-            <li> <a rel="glow" class="button glow" href="viewride.html">View Ride </a></li>
-            <li> <a rel="glow" class="button glow" href="about.html">About Us </a></li>
+            <li> <a rel="glow" class="button glow" href="about.xhtml">About Us </a></li>
 
-    </ul>
+        </ul>
     </nav>  
 </html>

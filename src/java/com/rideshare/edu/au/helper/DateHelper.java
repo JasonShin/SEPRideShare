@@ -13,6 +13,11 @@ import java.util.Calendar;
  * @author Jason
  */
 public class DateHelper {
+    
+    /**
+     * Acquires current date in SQL date format
+     * @return 
+     */
     public static Date getCurrentSqlDate(){
         Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         return date;

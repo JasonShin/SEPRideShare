@@ -23,6 +23,10 @@ public class RidesController {
     @EJB
     private RideRepository repos;
     
+    /**
+     * Get all rides stored in the database
+     * @return 
+     */
     public List<Ride> getRideList(){
         return repos.findAll();
     }

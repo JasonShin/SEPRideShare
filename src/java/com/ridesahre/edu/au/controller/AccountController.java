@@ -29,26 +29,42 @@ public class AccountController {
     @EJB
     private AccountRepository repos;
 
+    /**
+     * Initiating account bean that is going hold temporary data from forms
+     */
     @PostConstruct
     public void init(){
         account = new Account();
     }
     
+    /**
+     * Getting temp account data holder object
+     * @return 
+     */
     public Account getAccount() {
         return account;
     }
-
+    
+    /**
+     * Setting temp account data holder object
+     * @param account 
+     */
     public void setAccount(Account account) {
         this.account = account;
     }
     
     
-    
+    /**
+     * Signup a new account, which simply invokes create method of repository
+     */
     public void signup(){
         
         repos.create(account);
     }
     
+    /**
+     * Logs out from the server by calling container based logout method
+     */
     public void logout(){
         try {
             FacesContext context = FacesContext.getCurrentInstance();
@@ -59,6 +75,9 @@ public class AccountController {
         }
     }
     
+    /**
+     * Login logic based on container technology of J2EE 
+     */
     public void login(){
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();

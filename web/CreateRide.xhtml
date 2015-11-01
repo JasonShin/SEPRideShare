@@ -6,20 +6,23 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"> 
-    
+
     <ui:include src="header.xhtml"/>
     <h:body>
-        
+
         <div id="Central">
             <!-- CREATE RIDE START -->
             <div id="CreateRideForm">
                 <h:form>
                     <h2 id="CreateRideFormHeader"><p:outputLabel value="Hello, #{request.remoteUser}. Are you trying to post a new ride as driver\?" /></h2>
                     <div id="CreateRideStart">
+                        <p:outputLabel id="startDestLabel" value="Starting Destination" />
                         <p:inputText id="startDest" value="#{rideController.ride.startingDestination}" pt:placeholder="Starting destination" />
                     </div>
-                    
+
                     <div id="CreateRideEnd">
+                        
+                        <p:outputLabel id="endDestLabel" value="Finishing Destination" />
                         <p:inputText id="finishDest" value="#{rideController.ride.finishedDestination}" pt:placeholder="Ending destination" />
                     </div>
                     <div id="CreateRideSubmit">
@@ -30,7 +33,21 @@
 
             <!-- CREATE RIDE END -->
         </div>
-   </h:body>
-    
-   <ui:include src="footer.xhtml"/>
+    </h:body>
+
+
+    <script>
+        $(document).ready(function(){
+            var availableTags = [
+                "Badgerys Creek", "Balgowlah", "Balgowlah Heights", "Balmain", "Balmain East", "Bangor", "Banksia", "Banksmeadow", "Bankstown", "Bankstown Airport", "Barangaroo", "Barden Ridge", "Bardwell Park", "Bardwell Valley", "Bass Hill", "Baulkham Hills", "Bayview", "Beacon Hill", "Beaconsfield", "Beaumont Hills", "Beecroft", "Belfield", "Bella Vista", "Bellevue Hill", "Belmore", "Belrose", "Berala", "Berkshire Park", "Berowra", "Berowra Creek", "Berowra Heights", "Berowra Waters", "Berrilee", "Beverly Park", "Beverly Hills", "Bexley", "Bexley North", "Bickley Vale", "Bidwill", "Bilgola Beach", "Bilgola Plateau", "Birchgrove", "Birrong", "Blackett", "Blacktown", "Blair Athol", "Blairmount", "Blakehurst", "Bligh Park", "Bondi", "Bondi Beach", "Bondi Junction", "Bonnet Bay", "Bonnyrigg", "Bonnyrigg Heights", "Bossley Park", "Botany", "Bow Bowing", "Box Hill", "Bradbury", "Breakfast Point", "Brighton-le-Sands", "Bringelly", "Bronte", "Brooklyn", "Brookvale", "Bundeena", "Burwood", "Burwood Heights", "Busby", "Cabarita", "Cabramatta", "Cabramatta West", "Cambridge Gardens", "Cambridge Park", "Camden", "Camden South", "Camellia", "Cammeray", "Campbelltown", "Camperdown", "Campsie", "Canada Bay", "Canley Heights", "Canley Vale", "Canoelands", "Canterbury", "Caringbah", "Caringbah South", "Carlingford", "Carlton", "Carnes Hill", "Carramar", "Carss Park", "Cartwright", "Castle Cove", "Castle Hill", "Castlecrag", "Castlereagh", "Casula", "Catherine Field", "Cattai", "Cawdor", "Cecil Hills", "Cecil Park", "Centennial Park", "Central Business District", "Chatswood", "Chatswood West", "Cheltenham", "Cherrybrook", "Chester Hill", "Chifley", "Chippendale", "Chipping Norton", "Chiswick", "Chullora", "Church Point", "Claremont Meadows", "Clarendon", "Clareville", "Claymore", "Clemton Park", "Clifton Gardens", "Clontarf", "Clovelly", "Clyde", "Coasters Retreat", "Cobbitty", "Colebee", "Collaroy", "Collaroy Plateau", "Colyton", "Como", "Concord", "Concord West", "Condell Park", "Connells Point", "Constitution Hill", "Coogee", "Cottage Point", "Cowan", "Cranebrook", "Cremorne", "Cremorne Point", "Cromer", "Cronulla", "Crows Nest", "Croydon", "Croydon Park", "Curl Curl", "Currans Hill", "Currawong Beach"
+            ];
+           $("#CreateRideStart").find("input").autocomplete({
+                source: availableTags.slice(0, 5)
+            });
+            $("#CreateRideEnd").find("input").autocomplete({
+                source: availableTags.slice(0, 5)
+            });
+        });
+    </script>
+    <ui:include src="footer.xhtml"/>
 </html>

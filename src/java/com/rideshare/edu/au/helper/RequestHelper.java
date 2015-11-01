@@ -12,6 +12,11 @@ import javax.faces.context.FacesContext;
  * @author Jason
  */
 public class RequestHelper {
+    
+    /**
+     * Get currently logged in user's name from security context
+     * @return 
+     */
     public static String getUsername(){
         return FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
     }

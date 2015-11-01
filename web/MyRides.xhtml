@@ -35,7 +35,9 @@
                 </p:column>
 
                 <p:column rendered="#{ride.username eq request.remoteUser}" headerText="Cancel Ride">
-                    <p:commandButton value="Cancel this ride" />
+                    <p:commandButton value="Cancel this ride" action="#{rideController.delete()}">
+                        <f:param name="rid" value="#{ride.id}" />
+                    </p:commandButton>
                 </p:column>
 
 

@@ -1,3 +1,21 @@
+/*************************
+Footer of Contents
+
+1. General
+
+2. Nav
+
+3. Main
+
+4. View my rides
+
+
+****************************/
+
+
+/********************
+GENERAL STYLE STARTS
+*********************/
 * { padding: 0; margin: 0 } 
 img { border: none; }
 
@@ -14,6 +32,15 @@ header {
     display:flex;
     align-items: center;
 }
+
+/********************
+GENERAL STYLE ENDS
+*********************/
+
+
+/********************
+NAVIGATION STYLE STARTS
+*********************/
 
 nav {
     position:relative;
@@ -33,10 +60,18 @@ nav li {
 
 nav a {
     text-decoration:none;
-    /*padding-right:30px;*/
 }
 
+/********************
+GENERAL STYLE ENDS
+*********************/
+
+/********************
+MAIN STYLE STARTS
+*********************/
+
 #main-content {
+    color: white;
     height: 400px;
     background-image: url("images/car-mountain.jpg");
     background-repeat: no-repeat;
@@ -96,9 +131,15 @@ button[name="buttonLogin"] {
    align:100px;
 }
 
-/************
-VIEW MY RIDES
-************/
+
+/********************
+MAIN STYLE ENDS
+*********************/
+
+
+/********************
+VIEW MY RIDES STARTS
+*********************/
 
 #Central{
     padding-top: 15px;
@@ -147,4 +188,19 @@ VIEW MY RIDES
 #CreateRideEnd > input{
     width: 300px;
     padding: 10px;
+}
+
+/********************
+VIEW MY RIDES ENDS
+*********************/
+
+
+#SignupWrapper {
+    float: left;
+}
+
+#LoginWrapper {
+    float :left;
+    margin-left: 100px;
+    margin-top: -37px;
 }

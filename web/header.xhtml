@@ -13,13 +13,17 @@ and open the template in the editor.
     <h:head>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link href="css\hover.css" rel="stylesheet" media="all"></link>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"></link>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     </h:head>
     
     <header class="header-bar">
         <h1 id="left-content"><a href="/RideShare/faces/index.xhtml">RideShare</a></h1>
         <div id="right-content">
             <h:form rendered="#{empty request.remoteUser}">
-                <p:commandButton id="signupButton" value="Signup" type="button"/> 
+                <div id="SignupWrapper">
+                    <p:commandButton id="signupButton" value="Signup" type="button"/>
+                </div>
                 <p:overlayPanel id="loginPanel" for="signupButton" hideEffect="fade">
 
                     <div id="container">
@@ -33,9 +37,10 @@ and open the template in the editor.
                         </div>
                         <div>Password: </div>
                         <div>
-                            <p:inputText id="newPassword" value="#{accountController.account.password}">
+                            <p:password  id="newPassword" value="#{accountController.account.password}"
+                                         feedback="true">
                                 <f:validator validatorId="custom.passwordValidator" />
-                            </p:inputText>
+                            </p:password>
 
                         </div>
 
@@ -66,7 +71,9 @@ and open the template in the editor.
 
 
             <h:form rendered="#{empty request.remoteUser}">
-                <p:commandButton id="loginButton" value="Login" type="button"/> 
+                <div id="LoginWrapper">
+                    <p:commandButton id="loginButton" value="Login" type="button"/> 
+                </div>
                 <p:overlayPanel id="loginPanel" for="loginButton" hideEffect="fade">
 
                     <div id="container">
@@ -77,9 +84,13 @@ and open the template in the editor.
 
                         </div>
                         <div>Password: </div>
-                        <div>
-                            <p:inputText id="password" value="#{accountController.account.password}" />
-
+                        <div id="LoginPasswordWrapper">
+                            <p:password id="password" value="#{accountController.account.password}" />
+                            <script>
+                                $(document).ready(function(){
+                                    $("#LoginPasswordWrapper").find("input").text("");
+                                });
+                            </script>
                         </div>
                         <div style="padding-top: 10px;"> 
                             <p:commandButton value="Login" id="loginSubmit" action="#{accountController.login()}" ajax="false" />
@@ -103,7 +114,7 @@ and open the template in the editor.
             <li> <a rel="glow" class="button glow" href="index.xhtml">Home</a></li>
             <li> <a rel="glow" class="button glow" href="MyRides.xhtml"> My Rides </a></li>
             <li> <a rel="glow" class="button glow" href="CreateRide.xhtml"> Create Ride</a></li>
-            <li> <a rel="glow" class="button glow" href="about.xhtml">About Us </a></li>
+            <li> <a rel="glow" class="button glow" href="AboutUs.xhtml">About Us </a></li>
 
         </ul>
     </nav>  

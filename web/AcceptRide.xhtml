@@ -8,28 +8,30 @@
     
     <ui:include src="header.xhtml"/>
     <h:body>
-        <p:dataTable value="#{rideController.findRide()}" var="ride">
-            <p:column headerText="Start destination">
-                <h:outputText value="#{ride.startingDestination}" />
-            </p:column>
-            
-            <p:column headerText="Finish destination">
-                <h:outputText value="#{ride.finishedDestination}" />
-            </p:column>
-            
-            <p:column headerText="Passenger">
-                <h:outputText value="#{ride.passengerLimit}" />
-            </p:column>
-            
-            <p:column headerText="Departure time">
-                <h:outputText value="#{ride.departureTime}" />
-            </p:column>
-            
-            <p:column headerText="Phone number">
-                <b><h:outputText value="#{ride.phoneNumber}" /></b>
-            </p:column>
-            
-        </p:dataTable>
+        <div id="Central">
+            <p:dataTable value="#{rideController.findRide()}" var="ride">
+                <p:column headerText="Start destination">
+                    <h:outputText value="#{ride.startingDestination}" />
+                </p:column>
+
+                <p:column headerText="Finish destination">
+                    <h:outputText value="#{ride.finishedDestination}" />
+                </p:column>
+
+                <p:column headerText="Passenger">
+                    <h:outputText value="#{ride.passengerLimit}" />
+                </p:column>
+
+                <p:column headerText="Departure time">
+                    <h:outputText value="#{ride.departureTime}" />
+                </p:column>
+
+                <p:column headerText="Phone number">
+                    <b><h:outputText value="#{ride.phoneNumber}" /></b>
+                </p:column>
+
+            </p:dataTable>
+        </div>
     </h:body>
     
     <ui:include src="footer.xhtml"/>

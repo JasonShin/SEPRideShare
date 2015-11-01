@@ -24,12 +24,15 @@ public class AccountRepository {
     @PersistenceContext
     private EntityManager em;
     
+    /**
+     * Create new account object. Password will be encrypted using SHA 256
+     * @param account 
+     */
     public void create(Account account){
         try {
             String encryptedPassword = SHA.hash256(account.getPassword());
             account.setPassword(encryptedPassword);
             account.setGroupname("Users");
-            System.out.println("Signup: " + account.getUsername());
             em.persist(account);
             em.flush();
         } catch (NoSuchAlgorithmException ex) {
@@ -37,21 +40,30 @@ public class AccountRepository {
         }
     }
     
+    /**
+     * 
+     * @param username
+     * @return 
+     */
     public Account read(String username){
         return em.createNamedQuery("findAccountByUsername", Account.class)
                 .setParameter("username", username)
                 .getSingleResult();
     }
     
+    /**
+     * Find all accounts
+     * @return 
+     */
     public List<Account> findAll(){
         return em.createNamedQuery("findAll", Account.class)
                 .getResultList();
     }
     
-    public void update(Account account){
-        
-    }
-    
+    /**
+     * Delete an account using username
+     * @param username 
+     */
     public void delete(String username){
         em.createNamedQuery("deleteAccountByUsername", Account.class)
                 .setParameter("username", username)

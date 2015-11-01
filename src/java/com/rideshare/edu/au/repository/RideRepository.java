@@ -22,33 +22,41 @@ public class RideRepository {
     private EntityManager em;
     
     
-    //C
+    /**
+     * Create new ride into the database
+     * @param ride 
+     */
     public void create(Ride ride){
         em.persist(ride);
         em.flush();
     }
     
-    //R
+    /**
+     * find a ride according to ID
+     * @param id
+     * @return 
+     */
     public Ride findRideById(int id){
         return em.createNamedQuery("findRideById", Ride.class)
                 .setParameter("id", id)
                 .getSingleResult();
     }
     
+    /**
+     * Find all Rides regardless of their condition
+     * @return 
+     */
     public List<Ride> findAll(){
         return em.createNamedQuery("findAllRides", Ride.class)
                 .getResultList();
     }
     
     
-    //U
-    /*public void updateRide(Ride ride){
-        em.createNamedQuery("updateRide", Ride.class)
-                .setParameter("id", ride.getId())
-                .executeUpdate();
-    }*/
     
-    //D
+    /**
+     * Delete a ride using their ID property
+     * @param id 
+     */
     public void deleteRideById(int id){
         em.createNamedQuery("deleteRideById", Ride.class)
                 .setParameter("id", id)

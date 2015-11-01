@@ -13,9 +13,21 @@ import javax.servlet.http.HttpServletRequest;
  * @author Jason
  */
 public class URLParamHelper {
+    
+    /**
+     * Acquires current Ride ID
+     * @return 
+     */
     public static String getRideId(){
         HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String rid = request.getParameter("rid");
         return rid;
+    }
+    /**
+     * Getting currently logged in username
+     * @return 
+     */
+    public static String getUserName(){
+       return FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
     }
 }
